@@ -1,0 +1,21 @@
+package main
+
+import "fmt"
+
+func main() {
+	// ... Ellipsis
+	// func functionName(param1 type1, param2 type2, param3 ...type3) returnType {
+	// Function Body
+	// }
+
+	fmt.Println("Sum of 1,2,3:", sum(1, 2, 3))
+
+}
+
+func sum(nums ...int) int {
+	total := 0
+	for _, num := range nums {
+		total += num
+	}
+	return total
+}

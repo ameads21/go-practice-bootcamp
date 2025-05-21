@@ -1,0 +1,102 @@
+package main
+
+import "fmt"
+
+func main() {
+	// var arrayName [size]elementType
+
+	var numbers [5]int // Prints as [0 0 0 0 0]
+	fmt.Println(numbers)
+
+	numbers[3] = 20
+
+	fruits := [4]string{"Apple", "Banana", "Orange", "Grapes"}
+
+	fmt.Println("Fruits Array: ", fruits)
+
+	originalArray := [3]int{1, 2, 3}
+
+	copiedArray := originalArray
+
+	copiedArray[0] = 100
+
+	fmt.Println("Original Array:", originalArray)
+	fmt.Println("Copied Array:", copiedArray)
+
+	for i := 0; i < len(numbers); i++ {
+		fmt.Println("Element at index,", i, ":", numbers[i])
+	}
+
+	for index, value := range numbers {
+		fmt.Printf("Index: %d, Value: %d\n", index, value)
+	}
+
+	// This is a nested array [[1 2 3] [4 5 6] [7 8 9]]
+	var matrix [3][3]int = [3][3]int{
+		{1, 2, 3},
+		{4, 5, 6},
+		{7, 8, 9},
+	}
+
+	fmt.Println(matrix)
+
+}
+
+
+
+
+
+
+    & means "get the address of" something. 
+
+    * means "pointer to" something — it lets you use or create a variable that points to a value. 
+
+ 
+
+Example: 
+
+OriginalArray := [3]int{1,2,3} 
+
+Var copiedArray *[3]int 
+
+ 
+
+CopiedArray = &originalArray 
+
+CopiedArray[0] = 100 
+
+ 
+
+Because the copied array is pointing to the originalArrays address, when we update the variable of the copiedArray, it also updates the variable originalArray since they both share the same memory address 
+
+ 
+
+An example use case is building an app where you can click on the plus icon and minus icon to affect the value. 
+
+ 
+
+type Counter struct { 
+
+    value int 
+
+} 
+
+  
+
+func increment(c *Counter) { 
+
+    c.value++ 
+
+} 
+
+  
+
+func main() { 
+
+    counter := Counter{} 
+
+    increment(&counter) 
+
+    fmt.Println(counter.value) // Output: 1 
+
+} 
