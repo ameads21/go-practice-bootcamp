@@ -1,0 +1,18 @@
+package main
+
+import (
+	"fmt"
+	"os"
+)
+
+func main() {
+	// Deferred will not execute because of the os.exit
+	defer fmt.Println("Deferred Statement")
+	fmt.Println("Starting the main function")
+
+	// Exit status code 1
+	os.Exit(1)
+
+	// This will never run
+	fmt.Println("End of main function")
+}

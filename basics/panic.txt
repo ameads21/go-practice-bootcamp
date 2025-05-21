@@ -1,0 +1,22 @@
+package main
+
+import "fmt"
+
+func main() {
+	// interface is like the type "Any"
+	// panic(interface{})
+
+	process(10)
+
+	process(-20)
+}
+
+func process(input int) {
+	defer fmt.Println("Deferred 1")
+	defer fmt.Println("Deferred2")
+
+	if input < 0 {
+		panic("input must be a non-negative number")
+	}
+	fmt.Println("Processing input:", input)
+}
