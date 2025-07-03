@@ -1,0 +1,56 @@
+package main
+
+import (
+	"fmt"
+	"unicode/utf8"
+)
+
+func main() {
+	message := "Hello, \nGo!"
+	messageTwo := "Hello, \tGo!"
+	messageThree := "Hello, \rGo!"
+	rawMessage := `Hello\nGo`
+
+	fmt.Println(message)
+	fmt.Println(messageTwo)
+	fmt.Println(messageThree)
+	fmt.Println(rawMessage)
+
+	fmt.Println("Length of message variable is", len(rawMessage))
+
+	fmt.Println("The first character in message var is", message[0]) // ASCII
+
+	greeting := "Hello "
+	name := "Alice"
+	fmt.Println(greeting + name)
+
+	str := "Apple"   // A has an ASCII value of 65
+	str1 := "apple"  // a has an ASCII value of 97
+	str2 := "banana" // b has ASCII value of 98
+	str3 := "app"    // a has an ASCII value of 97
+	fmt.Println(str < str2)
+	fmt.Println(str3 < str)
+	fmt.Println(str1 > str)
+	fmt.Println(str1 > str3)
+
+	for _, char := range message {
+		// fmt.Printf("Character at index %d is %c\n", i, char) // these are called format verbs
+		fmt.Printf("%x\n", char)
+	}
+
+	fmt.Println("Rune Count:", utf8.RuneCountInString(greeting))
+
+	greetingWithName := greeting + name
+	fmt.Println((greetingWithName))
+
+	var ch rune = 'a'
+
+	fmt.Println(ch)
+
+	fmt.Printf("%c\n", ch)
+
+	cstr := string(ch)
+	fmt.Println((cstr))
+
+	fmt.Printf("Type of cstr is %T\n", cstr)
+}

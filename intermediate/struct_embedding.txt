@@ -1,0 +1,44 @@
+package main
+
+import "fmt"
+
+type person struct {
+	name string
+	age  int
+}
+
+type Employee struct {
+	// employeeInfo person - If we were to do this, then all fields of person will be listed under employeeInfo. This is an embedded struct named field
+	// person - If we were to do this, we can access all of the person props in the root of the struct. This is Anonymous field. Imagine this as extended in typescript
+	person // Embedded struct
+	empId  string
+	salary float64
+}
+
+func (p person) introduce() {
+	fmt.Printf("Hi, I'm %s and I'm %d years of age\n", p.name, p.age)
+}
+
+func (e Employee) introduce() {
+	fmt.Printf("Hi, I'm %s, employee ID: %s, and I earn %.2f.\n", e.name, e.empId, e.salary)
+}
+
+func main() {
+	emp := Employee{
+		person: person{name: "John", age: 30},
+		empId:  "E001",
+		salary: 50000,
+	}
+
+	person := person{
+		name: "Jane",
+		age:  20,
+	}
+
+	fmt.Println("Name:", emp.name) // Accessing the embedded struct directly. typically it would be emp.person.name
+	fmt.Println("Age:", emp.age)
+	fmt.Println("Emp Id:", emp.empId)
+	fmt.Println("Salary:", emp.salary)
+	emp.introduce()
+	person.introduce()
+}

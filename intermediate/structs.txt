@@ -1,0 +1,89 @@
+package main
+
+import "fmt"
+
+type Address struct {
+	city    string
+	country string
+}
+
+type PhoneHomeCell struct {
+	home string
+	cell string
+}
+
+type Person struct {
+	firstName string
+	lastName  string
+	age       int
+	address   Address
+	PhoneHomeCell
+}
+
+// This is a method where it's tied to the Person struct. Very powerful tool that applies to all structs using Person
+func (p Person) fullName() string {
+	return p.firstName + " " + p.lastName
+}
+
+func (p *Person) incrementAgeBy1() {
+	p.age++
+}
+
+func main() {
+
+	p1 := Person{
+		firstName: "John",
+		lastName:  "Doe",
+		age:       30,
+		address: Address{
+			city:    "London",
+			country: "UK",
+		},
+		PhoneHomeCell: PhoneHomeCell{
+			home: "3983922932",
+			cell: "983839289239",
+		},
+	}
+
+	p2 := Person{
+		firstName: "Jane",
+		age:       25,
+	}
+
+	p3 := Person{
+		firstName: "Jane",
+		age:       25,
+	}
+
+	fmt.Println("Are p3 and p2 equal:", p2 == p3)
+
+	p2.address.city = "New York"
+	p2.address.country = "United States"
+
+	fmt.Println(p1.firstName)
+	fmt.Println(p1.address.country)
+	fmt.Println(p1.address.city)
+	fmt.Println(p1.cell)
+	fmt.Println(p1.home)
+	fmt.Println(p1.address)
+	fmt.Println(p2.firstName)
+	fmt.Println(p2.address.country)
+	fmt.Println(p2.address.city)
+
+	// Anonymous Structs
+	user := struct {
+		username string
+		email    string
+	}{
+		username: "user123",
+		email:    "emailexample@example.com",
+	}
+
+	fmt.Println(user.username)
+
+	fmt.Println(p1.fullName())
+	fmt.Println(p1.age)
+	p1.incrementAgeBy1()
+	fmt.Println(p1.age)
+
+}

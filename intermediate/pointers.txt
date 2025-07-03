@@ -1,0 +1,24 @@
+package main
+
+import "fmt"
+
+func main() {
+	// var ptr *int. If we don't assign a memory address to a referenced pointer, then the value is nil
+	var ptr *int
+	var a int = 10
+
+	ptr = &a
+
+	fmt.Println(a)
+	fmt.Println(ptr)  // Prints memory address of a
+	fmt.Println(*ptr) // Prints the value of the variable at that memory address. Dereferencing a pointer
+
+	modifyValue(ptr)
+	fmt.Println(*ptr)
+	fmt.Println(a)
+
+}
+
+func modifyValue(ptr *int) {
+	*ptr++
+}

@@ -1,0 +1,55 @@
+package main
+
+import "fmt"
+
+func main() {
+
+	// // Printing Functions
+	// fmt.Print("Hello ")
+	// fmt.Print("World!")
+	// fmt.Print(12, 456)
+
+	// fmt.Println("Hello ")
+	// fmt.Println("World!")
+	// fmt.Println(12, 456)
+
+	// name := "John"
+	// age := 25
+
+	// fmt.Printf("Name: %s, Age: %d\n", name, age)
+	// fmt.Printf("Binary: %b, Hex: %X\n", age, age)
+
+	// // Formatting Functions
+	// s := fmt.Sprint("Hello ", "World!", 123, 456)
+	// fmt.Println(s)
+
+	// s = fmt.Sprintln("Hello", "World!", 123, 456)
+	// fmt.Println(s)
+
+	// sf := fmt.Sprintf("Name: %s, Age %d", name, age)
+	// fmt.Println(sf)
+
+	// Scanning functions
+	// var name string
+	// var age int
+
+	// fmt.Print("Enter your name and age:")
+	// fmt.Scanln(&name, &age) // Since we are assigning the variable here, we need to declare the variable
+	// fmt.Scan(&name, &age) // Difference between between scan and scanln is if you were to press enter and try to avoid typing a value, it won't continue until you input a valid input. Scanln will stop running after hitting enter
+	// fmt.Scanf("%s %d", &name, &age) // Scanf allows users to input format expressifiers as values
+	// fmt.Printf("Name: %s, Age %d\n", name, age)
+
+	// Error formatting functions
+	err := checkAge(5)
+	if err != nil {
+		fmt.Println("Error: ", err)
+	}
+
+}
+
+func checkAge(age int) error {
+	if age < 18 {
+		return fmt.Errorf("Age %d is too young to drive.", age)
+	}
+	return nil
+}
